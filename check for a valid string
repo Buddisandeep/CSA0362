@@ -1,0 +1,29 @@
+//check for a valid string 
+#include <stdio.h>
+#include <stdbool.h> // Include the header for using boolean data type
+
+bool isValidString(const char *str) {
+    // Iterate through the characters until a null terminator is encountered
+    for (int i = 0; str[i] != '\0'; i++) {
+        // Check if the character is outside the valid range
+        if (str[i] < 32 || str[i] > 126) {
+            return false;
+        }
+    }
+    return true;
+}
+
+int main() {
+	printf("name : B.sandeep\n");
+    char input[100]; // Change the array size as needed
+    printf("Enter a string: ");
+    scanf("%99s", input); // Read input string (up to 99 characters)
+
+    if (isValidString(input)) {
+        printf("The input is a valid string.\n");
+    } else {
+        printf("The input is not a valid string.\n");
+    }
+
+    return 0;
+}
