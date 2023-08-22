@@ -1,0 +1,24 @@
+//given a string sort in alphabetical order
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+int compare(const void *a, const void *b) {
+    return (*(char *)a - *(char *)b);
+}
+
+int main() {
+	printf("name : B.sandeep\n");
+    char str[100]; // Change the array size as needed
+    printf("Enter a string: ");
+    scanf("%s", str);
+
+    int length = strlen(str);
+
+    // Sort the characters using qsort
+    qsort(str, length, sizeof(char), compare);
+
+    printf("Sorted string: %s\n", str);
+
+    return 0;
+}
