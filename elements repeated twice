@@ -1,0 +1,28 @@
+//elements repeated twice array 
+#include <stdio.h>
+
+int main() {
+	printf("name : B.sandeep\n");
+    int arr[] = {4, 7, 2, 4, 5, 7, 9, 2, 5}; // Modify the array as needed
+    int size = sizeof(arr) / sizeof(arr[0]);
+
+    printf("Elements repeated twice in the array:\n");
+
+    for (int i = 0; i < size; i++) {
+        int count = 0;
+        
+        // Count occurrences of the current element
+        for (int j = 0; j < size; j++) {
+            if (arr[i] == arr[j]) {
+                count++;
+            }
+        }
+
+        // Display the element if repeated twice
+        if (count == 2) {
+            printf("%d\n", arr[i]);
+        }
+    }
+
+    return 0;
+}
