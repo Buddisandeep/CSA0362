@@ -1,0 +1,76 @@
+//queue using two stacks 
+#include <stdio.h>
+#include <stdlib.h>
+
+#define SIZE 5
+
+struct Stack {
+    int data[SIZE];
+    int top;
+};
+
+void initialize(struct Stack *stack) {
+    stack->top = -1;
+}
+
+int isEmpty(struct Stack *stack) {
+    return stack->top == -1;
+}
+
+int isFull(struct Stack *stack) {
+    return stack->top == SIZE - 1;
+}
+
+void push(struct Stack *stack, int value) {
+    if (isFull(stack)) {
+        printf("Stack overflow!\n");
+        return;
+    }
+    stack->data[++stack->top] = value;
+}
+
+int pop(struct Stack *stack) {
+    if (isEmpty(stack)) {
+        printf("Stack underflow!\n");
+        return -1;
+    }
+    return stack->data[stack->top--];
+}
+
+void enqueue(struct Stack *s1, int value) {
+    push(s1, value);
+}
+
+int dequeue(struct Stack *s1, struct Stack *s2) {
+    if (isEmpty(s2)) {
+        while (!isEmpty(s1)) {
+            push(s2, pop(s1));
+        }
+    }
+    if (isEmpty(s2)) {
+        printf("Queue is empty!\n");
+        return -1;
+    }
+    return pop(s2);
+}
+
+int main() {
+	printf("name : B.sandeep\n");
+    struct Stack stack1, stack2;
+    initialize(&stack1);
+    initialize(&stack2);
+
+    enqueue(&stack1, 10);
+    enqueue(&stack1, 20);
+    enqueue(&stack1, 30);
+
+    printf("Dequeue: %d\n", dequeue(&stack1, &stack2));
+    printf("Dequeue: %d\n", dequeue(&stack1, &stack2));
+
+    enqueue(&stack1, 40);
+
+    printf("Dequeue: %d\n", dequeue(&stack1, &stack2));
+    printf("Dequeue: %d\n", dequeue(&stack1, &stack2));
+
+    return 0;
+}
