@@ -1,0 +1,19 @@
+//given set of array elements display 5th irerated element
+#include <stdio.h>
+
+int main() {
+	printf("name : B.sandeep\n");
+    int arr[] = {10, 20, 30, 40, 50, 60, 70, 80, 90, 100};
+    int size = sizeof(arr) / sizeof(arr[0]);
+
+    int iteration = 5; // Change this to the desired iteration
+    int index = (iteration - 1) % size;
+
+    if (iteration > 0 && index >= 0 && index < size) {
+        printf("5th iterated element: %d\n", arr[index]);
+    } else {
+        printf("Invalid iteration value\n");
+    }
+
+    return 0;
+}
