@@ -1,0 +1,26 @@
+//sum of fibonacci series 192211677
+#include <stdio.h>
+
+int main() {
+	printf("name : B.sandeep\n");
+    int n;
+    printf("Enter the number of terms in the Fibonacci series: ");
+    scanf("%d", &n);
+
+    int first = 0, second = 1, next, sum = 0;
+
+    printf("Fibonacci series: %d %d ", first, second);
+    sum = first + second;
+
+    for (int i = 3; i <= n; i++) {
+        next = first + second;
+        printf("%d ", next);
+        sum += next;
+        first = second;
+        second = next;
+    }
+
+    printf("\nSum of Fibonacci series: %d\n", sum);
+
+    return 0;
+}
