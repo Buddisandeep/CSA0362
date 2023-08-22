@@ -1,0 +1,18 @@
+//identift location of elements in given array 192211677
+#include <stdio.h>
+
+int main() {
+	printf("name : B.sandeep\n");
+    int arr[] = {5, 2, 8, 1, 3, 8, 6, 8};
+    int size = sizeof(arr) / sizeof(arr[0]);
+    int target = 8; // Element to search for
+
+    printf("Indices of element %d in the array: ", target);
+    for (int i = 0; i < size; i++) {
+        if (arr[i] == target) {
+            printf("%d ", i);
+        }
+    }
+
+    return 0;
+}
