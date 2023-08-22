@@ -1,0 +1,22 @@
+//given unsorted array display missing element 
+#include <stdio.h>
+
+int main() {
+	printf("name : B.sandeep\n");
+    int arr[] = {4, 7, 2, 1, 6, 9, 3, 8}; // Modify the array as needed
+    int size = sizeof(arr) / sizeof(arr[0]);
+
+    int n = size + 1; // Number of elements including the missing one
+    int expected_sum = n * (n + 1) / 2; // Sum of first n natural numbers
+
+    int actual_sum = 0;
+    for (int i = 0; i < size; i++) {
+        actual_sum += arr[i];
+    }
+
+    int missing_element = expected_sum - actual_sum;
+
+    printf("Missing element: %d\n", missing_element);
+
+    return 0;
+}
