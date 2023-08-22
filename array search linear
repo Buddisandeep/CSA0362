@@ -1,0 +1,28 @@
+//array search linear and binary 192211677
+#include <stdio.h>
+
+int linearSearch(int arr[], int size, int target) {
+    for (int i = 0; i < size; i++) {
+        if (arr[i] == target) {
+            return i; // Found at index i
+        }
+    }
+    return -1; // Not found
+}
+
+int main() {
+	printf("name : B.sandeep\n");
+    int arr[] = {2, 4, 6, 8, 10, 12, 14, 16, 18, 20};
+    int size = sizeof(arr) / sizeof(arr[0]);
+    int target = 12;
+
+    int linearResult = linearSearch(arr, size, target);
+
+    if (linearResult != -1) {
+        printf("Linear Search: Element found at index %d\n", linearResult);
+    } else {
+        printf("Linear Search: Element not found\n");
+    }
+
+    return 0;
+}
