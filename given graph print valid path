@@ -1,0 +1,61 @@
+//print valid path
+#include <stdio.h>
+
+#define V 6 // Number of vertices
+
+// Function to print the path
+void printPath(int path[], int pathLength) {
+    for (int i = 0; i < pathLength; i++) {
+        printf("%d", path[i]);
+        if (i != pathLength - 1) {
+            printf(" -> ");
+        }
+    }
+    printf("\n");
+}
+
+// Depth-First Search to print valid paths
+void printPathsDFS(int graph[V][V], int current, int dest, int visited[], int path[], int pathLength) {
+    visited[current] = 1;
+    path[pathLength] = current;
+    pathLength++;
+
+    if (current == dest) {
+        printPath(path, pathLength);
+    } else {
+        for (int i = 0; i < V; i++) {
+            if (graph[current][i] && !visited[i]) {
+                printPathsDFS(graph, i, dest, visited, path, pathLength);
+            }
+        }
+    }
+
+    visited[current] = 0; // Backtrack
+}
+
+// Wrapper function to print paths between two vertices
+void printPaths(int graph[V][V], int src, int dest) {
+    int visited[V] = {0};
+    int path[V];
+    int pathLength = 0;
+
+    printf("Paths from %d to %d:\n", src, dest);
+    printPathsDFS(graph, src, dest, visited, path, pathLength);
+}
+
+int main() {
+	printf("name : B.sandeep\n");
+    int graph[V][V] = {
+        {0, 1, 1, 0, 0, 0},
+        {0, 0, 1, 1, 0, 0},
+        {0, 0, 0, 1, 1, 0},
+        {0, 0, 0, 0, 1, 1},
+        {0, 0, 0, 0, 0, 1},
+        {0, 0, 0, 0, 0, 0}
+    };
+
+    int src = 0, dest = 5;
+    printPaths(graph, src, dest);
+
+    return 0;
+}
