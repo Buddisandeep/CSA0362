@@ -1,0 +1,57 @@
+//kth min value
+#include <stdio.h>
+
+// Swap two elements
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+// Partition function for Quickselect
+int partition(int arr[], int low, int high) {
+    int pivot = arr[high];
+    int i = (low - 1);
+
+    for (int j = low; j <= high - 1; j++) {
+        if (arr[j] <= pivot) {
+            i++;
+            swap(&arr[i], &arr[j]);
+        }
+    }
+    swap(&arr[i + 1], &arr[high]);
+    return (i + 1);
+}
+
+// Quickselect algorithm
+int quickselect(int arr[], int low, int high, int k) {
+    if (low < high) {
+        int pi = partition(arr, low, high);
+
+        if (pi == k - 1)
+            return arr[pi];
+
+        if (pi > k - 1)
+            return quickselect(arr, low, pi - 1, k);
+
+        return quickselect(arr, pi + 1, high, k);
+    }
+
+    return -1; // Return a sentinel value indicating an error
+}
+
+int main() {
+	printf("name : B.sandeep\n");
+    int arr[] = {3, 1, 4, 1, 5, 9, 2, 6};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int k = 3; // Find the 3rd smallest element
+
+    int kthSmallest = quickselect(arr, 0, n - 1, k);
+    
+    if (kthSmallest != -1)
+        printf("The %dth smallest element is: %d\n", k, kthSmallest);
+    else
+        printf("Invalid value of k.\n");
+
+    return 0;
+}
